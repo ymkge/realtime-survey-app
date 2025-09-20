@@ -1,11 +1,5 @@
 import Link from 'next/link'
-
-// この型定義は複数の場所で利用するため、将来的には types/index.ts のようなファイルに切り出すのが望ましいです。
-export type Poll = {
-  id: string
-  title: string
-  created_at: string
-}
+import type { Poll } from '@/types'
 
 export default function PollCard({ poll }: { poll: Poll }) {
   const createdAt = new Date(poll.created_at).toLocaleString('en-US', {

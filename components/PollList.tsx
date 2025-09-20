@@ -1,4 +1,5 @@
-import PollCard, { type Poll } from './PollCard'
+import PollCard from './PollCard'
+import type { Poll } from '@/types'
 
 export default function PollList({ polls }: { polls: Poll[] | null }) {
   if (!polls || polls.length === 0) {

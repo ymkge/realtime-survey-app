@@ -5,25 +5,10 @@ import { createClient } from '@/lib/supabase/client'
 import { voteOnPoll } from '@/app/poll/[id]/actions'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { useRouter } from 'next/navigation'
-
-// 型定義
-type Option = {
-  id: string
-  text: string
-}
-
-type Poll = {
-  id: string
-  title: string
-  options: Option[]
-}
-
-type Vote = {
-  option_id: string
-}
+import type { PollWithWithOptions, Vote } from '@/types'
 
 type PollDetailsProps = {
-  poll: Poll
+  poll: PollWithWithOptions
   userVote: Vote | null
   initialVotes: Vote[]
   isLoggedIn: boolean
