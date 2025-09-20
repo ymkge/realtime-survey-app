@@ -1,80 +1,80 @@
-# Realtime Survey Application
+# リアルタイムアンケートアプリ
 
-This is a full-stack web application that allows users to create, vote on, and view survey polls in real-time. It is built with Next.js, Supabase, and Tailwind CSS.
+このプロジェクトは、ユーザーがリアルタイムでアンケートの作成、投票、結果閲覧ができるフルスタックWebアプリケーションです。Next.js, Supabase, Tailwind CSS を使用して構築されています。
 
-## Features
+## 主な機能
 
-- **User Authentication**: Secure sign-up and login functionality using Supabase Auth.
-- **Poll Management**: Authenticated users can create new polls and view a list of their created polls on a personal dashboard.
-- **Real-time Voting**: Users can vote on polls, and the results are updated in real-time for all viewers using Supabase Realtime.
-- **Duplicate Vote Prevention**: Users are restricted to one vote per poll.
-- **Data Visualization**: Poll results are displayed as a bar chart using the Recharts library.
+- **ユーザー認証**: Supabase Auth を利用した、安全なサインアップおよびログイン機能。
+- **アンケート管理**: 認証済みユーザーは、専用のダッシュボードで新しいアンケートを作成したり、自分が作成したアンケートの一覧を確認したりできます。
+- **リアルタイム投票**: ユーザーはアンケートに投票でき、その結果は Supabase Realtime を通じてすべての閲覧者にリアルタイムで反映されます。
+- **重複投票の防止**: 1ユーザーにつき1票のみ投票できるように制限されています。
+- **データ可視化**: 投票結果は Recharts ライブラリを使用した棒グラフで表示されます。
 
-## Tech Stack
+## 使用技術
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Database & Auth**: [Supabase](https://supabase.com/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Language**: TypeScript
-- **UI Components**: [Recharts](https://recharts.org/) for charts.
+- **フレームワーク**: [Next.js](https://nextjs.org/) (App Router)
+- **データベース & 認証**: [Supabase](https://supabase.com/)
+- **スタイリング**: [Tailwind CSS](https://tailwindcss.com/)
+- **言語**: TypeScript
+- **UIコンポーネント**: グラフ表示のために [Recharts](https://recharts.org/) を使用
 
-## Local Development Setup
+## ローカルでの開発環境セットアップ
 
-Follow these steps to get the project running on your local machine.
+お使いのPCでこのプロジェクトを動かすための手順です。
 
-### 1. Prerequisites
+### 1. 前提条件
 
-- [Node.js](https://nodejs.org/en) (version 18 or later)
+- [Node.js](https://nodejs.org/en) (v18 以降)
 - [npm](https://www.npmjs.com/)
-- A [Supabase](https://supabase.com/) account
+- [Supabase](https://supabase.com/) のアカウント
 
-### 2. Clone the Repository
+### 2. リポジトリのクローン
 
 ```bash
-git clone <repository-url>
+git clone <リポジトリのURL>
 cd realtime-survey-app
 ```
 
-### 3. Install Dependencies
+### 3. 依存関係のインストール
 
 ```bash
 npm install
 ```
 
-### 4. Set Up Environment Variables
+### 4. 環境変数の設定
 
-1.  Create a new project on Supabase.
-2.  Copy the `.env.example` file to a new file named `.env.local`.
+1.  Supabase で新規プロジェクトを作成します。
+2.  `.env.example` ファイルをコピーして、`.env.local` という名前の新しいファイルを作成します。
     ```bash
     cp .env.example .env.local
     ```
-3.  In your Supabase project, go to **Settings > API**.
-4.  Find your **Project URL** and `anon` **public key**.
-5.  Paste these values into your `.env.local` file:
+3.  Supabase プロジェクトの管理画面で、**Settings > API** に移動します。
+4.  **Project URL** と `anon` **public key** を見つけます。
+5.  これらの値をコピーし、`.env.local` ファイルに貼り付けます。
     ```
-    NEXT_PUBLIC_SUPABASE_URL="YOUR_SUPABASE_URL"
-    NEXT_PUBLIC_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
+    NEXT_PUBLIC_SUPABASE_URL="ここにあなたのSupabaseプロジェクトURLを貼り付け"
+    NEXT_PUBLIC_SUPABASE_ANON_KEY="ここにあなたのSupabase anon publicキーを貼り付け"
     ```
 
-### 5. Set Up Supabase Database
+### 5. Supabase データベースのセットアップ
 
-1.  In your Supabase project, go to the **SQL Editor**.
-2.  Open the `schema.sql` file from this repository, copy its content.
-3.  Paste the SQL content into the editor and click **RUN** to create the tables (`polls`, `options`, `votes`) and their corresponding security policies (RLS).
+1.  Supabase プロジェクトの管理画面で、**SQL Editor** に移動します。
+2.  このリポジトリにある `schema.sql` ファイルを開き、その中身をすべてコピーします。
+3.  コピーしたSQLをエディタに貼り付け、**RUN** ボタンをクリックします。これにより、テーブル（`polls`, `options`, `votes`）と、行レベルセキュリティ（RLS）ポリシーが作成されます。
 
-### 6. Enable Real-time
+### 6. リアルタイム機能の有効化
 
-1.  In your Supabase project, go to **Database > Replication**.
-2.  Click on the gear icon next to `supabase_realtime`.
-3.  Enable replication for the `polls`, `options`, and `votes` tables by checking the boxes next to them.
-4.  Click **Save**.
+1.  Supabase プロジェクトの管理画面で、**Database > Replication** に移動します。
+2.  `supabase_realtime` の隣にある歯車アイコンをクリックします。
+3.  `polls`, `options`, `votes` テーブルのチェックボックスをオンにして、レプリケーションを有効にします。
+4.  **Save** をクリックします。
 
-### 7. Run the Application
+### 7. アプリケーションの実行
 
-Now you can start the development server:
+開発サーバーを起動します。
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開くと、アプリケーションが表示されます。
