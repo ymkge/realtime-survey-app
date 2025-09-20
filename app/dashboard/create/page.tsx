@@ -11,9 +11,8 @@ export default async function CreatePollPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <div className="container mx-auto px-4">
-        <PollForm />
+    <div className="min-h-screen bg-background py-10">
+      <PollForm />
       </div>
     </div>
   )
