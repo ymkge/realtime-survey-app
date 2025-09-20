@@ -1,5 +1,4 @@
 import AuthForm from '@/components/AuthForm'
-import { Suspense } from 'react'
 
 export default function Home() {
   return (
@@ -8,9 +7,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-center mb-8">
           Realtime Survey App
         </h1>
-        <Suspense fallback={<div>Loading...</div>}>
-          <AuthForm />
-        </Suspense>
+        <AuthForm />
       </div>
     </div>
   )
