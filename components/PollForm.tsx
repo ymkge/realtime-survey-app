@@ -23,7 +23,7 @@ function SubmitButton() {
 }
 
 export default function PollForm() {
-  const [state, formAction] = useFormState(createPoll, initialState)
+  const [state, formAction] = useActionState(createPoll, initialState)
   const [options, setOptions] = useState(['', ''])
 
   const handleAddOption = () => {

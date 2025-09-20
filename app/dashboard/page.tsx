@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import PollList from '@/components/PollList'
 
 export default async function DashboardPage() {
   const supabase = createClient()
@@ -10,9 +11,14 @@ export default async function DashboardPage() {
   } = await supabase.auth.getUser()
 
   if (!user) {
-    // このチェックはミドルウェアと重複するが、念のため
     redirect('/')
   }
+
+  const { data: polls } = await supabase
+    .from('polls')
+    .select('id, title, created_at')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
 
   const handleLogout = async () => {
     'use server'
@@ -47,8 +53,7 @@ export default async function DashboardPage() {
             </Link>
         </div>
         <div className="bg-white p-8 rounded-lg shadow-md">
-            <p>Your created polls will be listed here.</p>
-            {/* TODO: Implement PollList */}
+            <PollList polls={polls} />
         </div>
       </main>
     </div>
