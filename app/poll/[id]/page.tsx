@@ -50,11 +50,13 @@ export default async function PollPage({ params }: PollPageProps) {
     .eq('poll_id', pollId)
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <Link href="/dashboard" className="text-blue-600 hover:underline mb-6 inline-block">
+    <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
+      <Link href="/dashboard" className="text-primary hover:underline mb-6 inline-block">
         &larr; Back to Dashboard
       </Link>
-      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">{poll.title}</h1>
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-foreground">
+        {poll.title}
+      </h1>
       <PollDetails 
         poll={poll}
         userVote={userVote}

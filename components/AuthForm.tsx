@@ -23,14 +23,12 @@ export default function AuthForm() {
         if (result?.error) {
           setError(result.error)
         }
-        // 成功時は server action 内で redirect するので、この後のコードは実行されない
       } else {
         const result = await signup(formData)
         if (result?.error) {
           setError(result.error)
         } else if (result?.message) {
           setMessage(result.message)
-          // フォームをクリアする
           (e.target as HTMLFormElement).reset();
         }
       }
@@ -44,15 +42,15 @@ export default function AuthForm() {
   return (
     <div className="w-full max-w-sm mx-auto">
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-card shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 border border-border"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label className="block text-foreground text-sm font-bold mb-2" htmlFor="email">
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             id="email"
             name="email"
             type="email"
@@ -62,11 +60,11 @@ export default function AuthForm() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label className="block text-foreground text-sm font-bold mb-2" htmlFor="password">
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             id="password"
             name="password"
             type="password"
@@ -77,14 +75,14 @@ export default function AuthForm() {
         </div>
         <div className="flex flex-col items-center justify-between gap-4">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full disabled:opacity-50"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-primary text-primary-foreground hover:bg-primary/90"
             type="submit"
             disabled={isLoading}
           >
             {isLoading ? 'Processing...' : (isLogin ? 'Sign In' : 'Sign Up')}
           </button>
           <a
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 cursor-pointer"
+            className="inline-block align-baseline font-bold text-sm text-primary hover:underline cursor-pointer"
             onClick={() => {
               if (isLoading) return;
               setIsLogin(!isLogin)
@@ -95,7 +93,7 @@ export default function AuthForm() {
             {isLogin ? 'Create an account' : 'Already have an account?'}
           </a>
         </div>
-        {error && <p className="mt-4 text-center text-red-500 text-xs italic">{error}</p>}
+        {error && <p className="mt-4 text-center text-destructive text-xs italic">{error}</p>}
         {message && <p className="mt-4 text-center text-green-500 text-xs italic">{message}</p>}
       </form>
     </div>
