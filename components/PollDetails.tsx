@@ -96,7 +96,7 @@ export default function PollDetails({ poll, userVote, initialVotes, isLoggedIn }
       )}
 
       {/* 投票結果グラフ */}
-      <div className="bg-card p-6 rounded-xl shadow-lg border border-border"> {/* スタイル変更 */}
+      <div className="bg-card p-6 rounded-xl shadow-custom-lg border border-border"> {/* スタイル変更 */}
         <h3 className="text-xl font-semibold mb-4 text-foreground">Results</h3> {/* スタイル変更 */}
         <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>

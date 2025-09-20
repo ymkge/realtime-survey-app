@@ -42,7 +42,7 @@ export default function PollForm() {
   }
 
   return (
-    <form action={formAction} className="max-w-lg mx-auto bg-card p-8 rounded-xl shadow-lg border border-border">
+    <form action={formAction} className="max-w-lg mx-auto bg-card p-8 rounded-xl shadow-custom-lg border border-border">
       <h2 className="text-2xl font-bold mb-6 text-center text-foreground">Create a New Poll</h2>
       
       <div className="mb-6">

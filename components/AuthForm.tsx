@@ -42,7 +42,7 @@ export default function AuthForm() {
   return (
     <div className="w-full max-w-sm mx-auto">
       <form
-        className="bg-card shadow-lg rounded-xl px-8 pt-6 pb-8 mb-4 border border-border"
+        className="bg-card shadow-custom-lg rounded-xl px-8 pt-6 pb-8 mb-4 border border-border"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
