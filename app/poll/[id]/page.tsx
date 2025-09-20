@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import PollDetails from '@/components/PollDetails'
+import Link from 'next/link'
 
 type PollPageProps = {
   params: {
@@ -50,6 +51,9 @@ export default async function PollPage({ params }: PollPageProps) {
 
   return (
     <div className="container mx-auto p-4 md:p-8">
+      <Link href="/dashboard" className="text-blue-600 hover:underline mb-6 inline-block">
+        &larr; Back to Dashboard
+      </Link>
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">{poll.title}</h1>
       <PollDetails 
         poll={poll}
