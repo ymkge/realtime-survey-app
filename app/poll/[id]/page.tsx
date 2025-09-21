@@ -11,7 +11,7 @@ type PollPageProps = {
 
 export default async function PollPage({ params }: PollPageProps) {
   const supabase = createClient()
-  const pollId = params.id
+  const { id: pollId } = params
 
   // アンケート情報を取得 (pollsテーブルと、関連するoptionsテーブル)
   const { data: poll, error: pollError } = await supabase
@@ -50,11 +50,11 @@ export default async function PollPage({ params }: PollPageProps) {
     .eq('poll_id', pollId)
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
-      <Link href="/dashboard" className="text-primary hover:underline mb-6 inline-block">
+    <div className="min-h-screen bg-gray-100 p-4 md:p-8">
+      <Link href="/dashboard" className="text-blue-600 hover:underline mb-6 inline-block">
         &larr; Back to Dashboard
       </Link>
-      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center text-foreground">
+      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
         {poll.title}
       </h1>
       <PollDetails 

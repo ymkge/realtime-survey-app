@@ -66,5 +66,8 @@ const config: Config = {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: true,
+  },
 }
 export default config
